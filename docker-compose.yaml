@@ -7,7 +7,7 @@ services:
         environment:
             MYSQL_ROOT_PASSWORD: root
         network_mode: host
-    
+            
     api:
         build: 
             context: .

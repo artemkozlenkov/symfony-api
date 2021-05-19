@@ -8,4 +8,4 @@ RUN  chmod +x /tmp/api_dev_init.sh &&\
 
 WORKDIR /api
 
-CMD composer install && symfony server:start
+CMD symfony server:start
