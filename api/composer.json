@@ -1,0 +1,71 @@
+{
+    "name": "webapp/api",
+    "description": "Webapp Api-platform implementation",
+    "type": "project",
+    "license": "MIT",
+    "require": {
+        "php": "^7.4",
+        "ext-ctype": "*",
+        "ext-iconv": "*",
+        "ext-json": "*",
+        "api-platform/api-pack": "^1.2",
+        "doctrine/annotations": "^1.10.0",
+        "hautelook/alice-bundle": "^2.7",
+        "nelmio/cors-bundle": "^1.5.6",
+        "sensio/framework-extra-bundle": "^5.5.1",
+        "stof/doctrine-extensions-bundle": "^1.4",
+        "symfony/config": "4.*",
+        "symfony/console": "4.*",
+        "symfony/dotenv": "4.*",
+        "symfony/event-dispatcher": "4.*",
+        "symfony/flex": "^1.6",
+        "symfony/framework-bundle": "4.*",
+        "symfony/orm-pack": "^1.0.7",
+        "symfony/validator": "4.*",
+        "symfony/yaml": "4.*",
+        "symfony/security": "4.*",
+        "symfony/monolog-bundle": "3.5.*",
+        "friendsofphp/php-cs-fixer": "3.0.x-dev",
+        "lexik/jwt-authentication-bundle": "^2.6"
+    },
+    "require-dev": {
+        "justinrainbow/json-schema": "^5.2.9",
+        "phpunit/phpunit": "^8.5.3",
+        "roave/security-advisories": "dev-master",
+        "symfony/http-client": "4.4.*",
+        "symfony/maker-bundle": "^1.15.0",
+        "symfony/phpunit-bridge": "4.*",
+        "symfony/profiler-pack": "^1.0.4",
+        "symfony/test-pack": "^1.0",
+        "symfony/web-server-bundle": "4.*",
+        "ext-pdo": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "Webapp\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Webapp\\Tests\\": "tests/"
+        }
+    },
+    "scripts": {
+        "auto-scripts": {
+            "cache:clear": "symfony-cmd",
+            "assets:install %PUBLIC_DIR%": "symfony-cmd"
+        },
+        "post-install-cmd": [
+            "@auto-scripts"
+        ],
+        "post-update-cmd": [
+            "@auto-scripts"
+        ]
+    },
+    "extra": {
+        "symfony": {
+            "allow-contrib": true,
+            "require": "4.*"
+        }
+    }
+}

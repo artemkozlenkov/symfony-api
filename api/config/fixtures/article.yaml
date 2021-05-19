@@ -1,0 +1,8 @@
+Webapp\Entity\Article:
+  article{1..10}:
+    __construct: false
+    name: <word()>
+    category: <word()>
+    content: <text(255)>
+    createdAt: <datetime('Y-m-d')>
+    updatedAt: <datetime('Y-m-d')>

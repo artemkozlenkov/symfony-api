@@ -1,0 +1,8 @@
+Webapp\Entity\ProductPrice:
+  productPrice{1..10}:
+    __construct: false
+    pricePerUnit: <randomFloat(2, 0, 99999)>
+    product: '@product<current()>'
+    tax: '@tax<current()>'
+    createdAt: <datetime('Y-m-d')>
+    updatedAt: <datetime('Y-m-d')>

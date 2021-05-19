@@ -1,0 +1,50 @@
+<?php
+
+
+namespace Webapp\DataPersister;
+
+
+
+use ApiPlatform\Core\DataPersister\ContextAwareDataPersisterInterface;
+use Webapp\Entity\Article;
+use Webapp\Manager\ArticleManager;
+
+final class ArticleDataPersister implements ContextAwareDataPersisterInterface
+{
+    /**
+     * @var ArticleManager
+     */
+    private $articleManager;
+
+    public function __construct(ArticleManager $articleManager)
+    {
+        $this->articleManager = $articleManager;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function supports($data, array $context = []): bool
+    {
+        return $data instanceof Article;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function persist($data, array $context = [])
+    {
+        switch ($context['collection_operation_name']){
+            case 'post':
+                 $this->articleManager->create($data);
+        }
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function remove($data, array $context = [])
+    {
+        // TODO: Implement remove() method.
+    }
+}

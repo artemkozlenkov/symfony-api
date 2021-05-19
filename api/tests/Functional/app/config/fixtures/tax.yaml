@@ -1,0 +1,6 @@
+Webapp\Entity\Tax:
+  tax{1..10}:
+    __construct: false
+    taxPercent: <randomFloat(2, 0, 99)>
+    createdAt: <datetime('Y-m-d')>
+    updatedAt: <datetime('Y-m-d')>

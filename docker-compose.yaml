@@ -1,11 +1,11 @@
 version: "3.3"
 services:
     db:
-        image: postgres
+        image: mysql
         container_name: db
         restart: always
         environment:
-            POSTGRES_PASSWORD: postgres
+            MYSQL_ROOT_PASSWORD: root
         network_mode: host
     
     api:

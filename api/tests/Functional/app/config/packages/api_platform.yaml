@@ -1,0 +1,12 @@
+api_platform:
+    title: 'Webapp'
+    mapping:
+        paths: ['%main_dir%/src/Entity']
+    patch_formats:
+        jsonapi:  ['application/vnd.api+json']
+    formats:
+        jsonapi:  ['application/vnd.api+json']
+        html:     ['text/html']
+    error_formats:
+        jsonapi:                       ['application/vnd.api+json']
+        jsonproblem:                   ['application/problem+json']

@@ -1,0 +1,15 @@
+services:
+  _defaults:
+    autowire: true
+    autoconfigure: true
+
+  Webapp\:
+    resource: '%main_dir%/src/*'
+    exclude: '%main_dir%/src/{DependencyInjection,Entity,Migrations,Tests,Kernel.php}'
+
+  Webapp\Controller\:
+    resource: '%main_dir%/src/Controller'
+    tags: ['controller.service_arguments']
+
+  Webapp\DataProvider\UserDataProvider:
+    tags: ['api_platform.item_data_provider']

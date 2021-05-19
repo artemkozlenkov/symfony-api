@@ -1,0 +1,21 @@
+api_platform:
+    title: 'Webapp'
+    description: 'Webapp Project'
+    version: '0.0.1'
+    show_webby: false
+    mapping:
+        paths: ['%kernel.project_dir%/src/Entity']
+    patch_formats:
+        jsonapi:  ['application/vnd.api+json']
+    swagger:
+        versions: [3]
+        api_keys:
+            apiKey:
+                name: Authorization
+                type: header
+    formats:
+        jsonapi:  ['application/vnd.api+json']
+        html:     ['text/html']
+    error_formats:
+        jsonapi: ['application/vnd.api+json']
+        jsonproblem: ['application/problem+json']

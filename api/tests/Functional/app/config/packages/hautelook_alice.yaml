@@ -1,0 +1,2 @@
+imports:
+    - { resource: ../../../../../config/packages/dev/hautelook_alice.yaml }

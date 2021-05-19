@@ -1,0 +1,5 @@
+Webapp\Entity\User:
+  user_admin:
+    email: 'artem.kozlenkov@gmail.com'
+    password: 'artem1902'
+    roles: '[ROLE_ADMIN]'
