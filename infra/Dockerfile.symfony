@@ -1,36 +1,11 @@
 FROM php:7.4-fpm
-COPY www.conf /usr/local/etc/php-fpm.d/www.conf
 
-RUN apt-get update && apt-get install -y\
-    zlib1g-dev\
-    libzip-dev\
-    unzip\
-    git\
-    wget\
-  	--no-install-recommends && rm -r /var/lib/apt/lists/*
+COPY infra/www.conf /usr/local/etc/php-fpm.d/www.conf
+COPY infra/api_dev_init.sh /tmp/api_dev_init.sh
 
-RUN docker-php-ext-install\
-    pdo_mysql\
-    pdo
+RUN  chmod +x /tmp/api_dev_init.sh &&\
+     /bin/bash /tmp/api_dev_init.sh
 
-RUN pecl install\
-    xdebug-2.8.0beta2\
-    && docker-php-ext-enable xdebug
+WORKDIR /api
 
-#setting up xdebug
-RUN echo "xdebug.remote_enable=1" >> /usr/local/etc/php/php.ini\
-    && echo "xdebug.remote_connect_back=1" >> /usr/local/etc/php/php.ini\
-    && echo "xdebug.remote_host=host.docker.internal" >> /usr/local/etc/php/php.ini\
-    && echo "xdebug.remote_port=9001" >> /usr/local/etc/php/php.ini
-
-RUN wget http://pear.php.net/go-pear.phar\
-&& php go-pear.phar
-
-#installing Composer
-RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"\
-&& php composer-setup.php --install-dir=/usr/bin --filename=composer\
-&& php -r "unlink('composer-setup.php');"
-
-RUN composer self-update
-
-#CMD composer install --no-ansi --no-interaction
+CMD composer install && symfony server:start

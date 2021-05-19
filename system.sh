@@ -1,15 +1,16 @@
 #!/bin/bash -e	 
 
-	if [ $1 == 'up' ] | [ $1 == 'down' ];then 
+if [ $1 == 'up' ] || [ $1 == 'down' ];then
 	DCMP=docker-compose
 
 	CMD=$1
 	shift;
 	$DCMP $CMD --remove-orphans "$@"
-	fi;
+	exit;
+fi;
 
-	if [ $1 == 'exec' ];then
+if [ $1 == 'exec' ];then
 	ARG=$1
 	shift;
 	docker $ARG -it "$@" bash
-	fi;
+fi;

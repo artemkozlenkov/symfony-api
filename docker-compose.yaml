@@ -9,11 +9,11 @@ services:
         network_mode: host
     
     api:
-        image: nginx:latest
+        build: 
+            context: .
+            dockerfile: infra/Dockerfile.symfony
         container_name: api
         volumes:
-            - ./api/public:/var/www/html/public:rw    
-            # - ./infra/default.conf:/etc/nginx/conf.d/default.conf
+            - ./api:/api:rw    
         network_mode: host
-        # command: systemctl restart nginx
         
